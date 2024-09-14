@@ -8,7 +8,6 @@ const Header: React.FC = () => {
     const covidData = useSelector((state: RootState) => state.covidData.data);
     console.log(covidData);
     
-    const selectedState = useSelector((state: RootState) => state.covidData?.selectedState);
     const dispatch = useDispatch();
     const totalStates = Object.keys(
         Object.groupBy(covidData , ({ state }) => state)
@@ -16,9 +15,8 @@ const Header: React.FC = () => {
     const [selectedOption, setSelectedOption] = useState<string>(totalStates[0]);
     const options: string[] = totalStates;
     
-    const stateData = covidData?.filter(
-        (state) => state.state == selectedState
-      );   const handleChange = (e: ChangeEvent<HTMLSelectElement>): void => {
+    
+     const handleChange = (e: ChangeEvent<HTMLSelectElement>): void => {
         setSelectedOption(e.target.value);
         dispatch(setSelectedState(e.target.value));
     };
