@@ -1,10 +1,11 @@
-import React from 'react';
+import React from "react";
+import Home from "./components/Home";
 
 const App: React.FC = () => {
   return (
-    <div className=" bg-black text-white w-full h-full">
-
-    </div>
+    <>
+      <Home />
+    </>
   );
 };
 
