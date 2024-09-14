@@ -4,7 +4,7 @@ import { RootState } from "../store";
 import { StateCovidData } from "../slices/covidDataSlice";
 import PieChart from "./PieChart";
 import LineChart from "./LineChart";
-
+import Map from "./Map";
 
 const ContentContainer: React.FC = () => {
   const covidData = useSelector((state: RootState) => state.covidData.data);
@@ -31,13 +31,13 @@ const ContentContainer: React.FC = () => {
 
           <div className="w-full  flex-2">
             <div className="bg-white overflow-hidden shadow-md rounded-xl">
-              <LineChart data={stateData[0]}/>
+              <LineChart data={stateData[0]} />
             </div>
           </div>
         </div>
 
         <div className="w-full rounded-xl shadow-md overflow-hidden flex-1">
-          <div>map</div>
+          <Map />
         </div>
       </div>
     </>

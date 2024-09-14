@@ -2,7 +2,7 @@ import React from "react";
 import PlotlyComponent from "react-plotly.js";
 import { PlotData, Layout } from "plotly.js";
 
-interface stateDataProps {
+interface StateDataProps {
   stateData: {
     state: string;
     totalCases: number;
@@ -12,8 +12,8 @@ interface stateDataProps {
   };
 }
 
-const PieChart: React.FC<stateDataProps> = ({ stateData }) => {
-  const pieChartData: PlotData[] = [
+const PieChart: React.FC<StateDataProps> = ({ stateData }) => {
+  const pieChartData: Partial<PlotData>[] = [
     {
       labels: ["Active Cases", "Recovered", "Deaths"],
       values: [stateData.activeCases, stateData.recovered, stateData.deaths],
@@ -22,19 +22,13 @@ const PieChart: React.FC<stateDataProps> = ({ stateData }) => {
         colors: ["#228779", "#E7EFED", "#E17678"],
       },
       textinfo: "label+percent",
-      hoverinfo: "label+value+percent",
+      hoverinfo: "label+percent+value" as any,
       textfont: { size: 14, color: "#111" },
       hole: 0,
     },
   ];
 
   const layout: Partial<Layout> = {
-    title: {
-      font: { size: 22, color: "#333333" },
-      x: 0.5,
-      xanchor: "center",
-      y: 0.95,
-    },
     showlegend: true,
     legend: {
       orientation: "h",

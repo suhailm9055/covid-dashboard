@@ -1,0 +1,80 @@
+import React from "react";
+import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+import mockData from "../utils/mockData.json";
+import geoMock from "../utils/geoMock.json";
+import L from "leaflet";
+import { FeatureCollection, Feature, Point } from "geojson";
+
+interface StateData {
+  state: string;
+  totalCases: number;
+  activeCases: number;
+  recovered: number;
+  deaths: number;
+}
+
+interface GeoJSONFeature extends Feature<Point> {
+  properties: {
+    name: string;
+  };
+}
+
+const Map: React.FC = () => {
+  const onEachFeature = (feature: GeoJSONFeature, layer: L.Layer) => {
+    const stateName = feature.properties.name;
+    const stateData = mockData.find(
+      (state: StateData) => state.state === stateName
+    );
+
+    if (stateData) {
+      layer.bindTooltip(
+        `<strong>${stateName}</strong><br>
+         Total Cases: ${stateData.totalCases}<br>
+         Active Cases: ${stateData.activeCases}<br>
+         Recovered: ${stateData.recovered}<br>
+         Deaths: ${stateData.deaths}`
+      );
+    }
+  };
+
+  const customIcon = new L.Icon({
+    iconUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png",
+    iconSize: [20, 35],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png",
+    shadowSize: [41, 41],
+  });
+
+  const pointToLayer = (
+    feature: GeoJSONFeature,
+    latlng: L.LatLngExpression
+  ): L.Marker => {
+    return L.marker(latlng, { icon: customIcon });
+  };
+
+  return (
+    <div className="w-full h-full">
+      <MapContainer
+        center={[20.5937, 78.9629]} // Center of India
+        zoom={4}
+        className="w-full h-full min-h-[400px]"
+      >
+        {geoMock && (
+          <GeoJSON
+            data={geoMock as FeatureCollection<Point>}
+            onEachFeature={onEachFeature}
+            pointToLayer={pointToLayer}
+          />
+        )}
+        <TileLayer
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        />
+      </MapContainer>
+    </div>
+  );
+};
+
+export default Map;

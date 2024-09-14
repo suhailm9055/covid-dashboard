@@ -16,6 +16,7 @@ const LineChart: React.FC<LineChartProps> = ({ data }) => {
 
   const categories = ["Total Cases", "Active Cases", "Recovered", "Deaths"];
   const values = [totalCases, activeCases, recovered, deaths];
+console.log(data,"data");
 
   return (
     <div className="flex justify-center items-center bg-gray-50">
