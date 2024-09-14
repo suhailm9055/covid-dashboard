@@ -36,7 +36,7 @@ const LineChart: React.FC<LineChartProps> = ({ data }) => {
             title: ` ${state}`,
             xaxis: { title: "Categories" },
             yaxis: { title: "Count" },
-            // height: 400,
+            height: 450,
             font: { family: "sans-serif" },
           }}
           config={{ responsive: true }}
