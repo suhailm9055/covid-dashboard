@@ -1,0 +1,10 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+#root{
+    height: 100vh;
+    height: 100dvh;
+    width: 100vw;
+    width: 100dvw;
+}
