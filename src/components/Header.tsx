@@ -24,7 +24,7 @@ const Header: React.FC = () => {
 
   return (
     <>
-      <div className="flex flex-col  items-center gap-5 mb-4 w-full bg-[#1E796C] p-6 rounded-xl items-center">
+      <div className="flex flex-col  items-center gap-5 mb-4 w-full bg-[#1E796C] p-6 rounded-xl items-center tab:flex-row">
         <span className="flex-1">
           <h1 className="text-2xl  w-full text-[#E7EFED] ">
             COVID-19 Statewise Updates

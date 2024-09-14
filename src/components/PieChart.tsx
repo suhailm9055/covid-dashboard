@@ -37,7 +37,7 @@ const PieChart: React.FC<StateDataProps> = ({ stateData }) => {
       xanchor: "center",
       font: { size: 14, color: "#666666" },
     },
-    height: 400,
+    height: 450,
     margin: { t: 72, b: 70, l: 70, r: 70 },
     plot_bgcolor: "#ffffff",
     font: { family: "Arial, sans-serif", size: 14, color: "#333333" },

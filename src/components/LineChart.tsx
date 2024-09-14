@@ -16,7 +16,7 @@ const LineChart: React.FC<LineChartProps> = ({ data }) => {
 
   const categories = ["Total Cases", "Active Cases", "Recovered", "Deaths"];
   const values = [totalCases, activeCases, recovered, deaths];
-console.log(data,"data");
+  console.log(data, "data");
 
   return (
     <div className="flex justify-center items-center bg-gray-50">
@@ -33,10 +33,10 @@ console.log(data,"data");
             },
           ]}
           layout={{
-            title: `COVID-19 Statistics for ${state}`,
+            title: ` ${state}`,
             xaxis: { title: "Categories" },
             yaxis: { title: "Count" },
-            // height: 400, 
+            // height: 400,
             font: { family: "sans-serif" },
           }}
           config={{ responsive: true }}
