@@ -4,10 +4,11 @@ import mockData from "../utils/mockData.json";
 
 export interface StateCovidData {
     state: string;
-    totalCases: number;
-    activeCases: number;
-    recovered: number;
-    deaths: number;
+    totalCases: number[];
+    activeCases: number[];
+    recovered: number[];
+    deaths: number[];
+    dates:string[];
   }
 
 export interface CovidState {

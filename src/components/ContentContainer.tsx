@@ -16,8 +16,6 @@ const ContentContainer: React.FC = () => {
     (state) => state.state === selectedState
   ) as StateCovidData[];
 
-  const casesData = [{ latitude: 10.02, longitude: 76.14 }];
-
   return (
     <>
       <h2 className="text-xl font-semibold text-center mb-4 text-[#021E1A] ">{` ${stateData[0]?.state} COVID-19 Stats`}</h2>

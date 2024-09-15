@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent, useEffect } from "react";
+import React, { useState, ChangeEvent,  useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedState } from "../slices/covidDataSlice";
 import { RootState } from "../store";
@@ -7,16 +7,15 @@ const Header: React.FC = () => {
   const covidData = useSelector((state: RootState) => state.covidData.data);
 
   const dispatch = useDispatch();
-  const totalStates = Object.keys(
-    Object.groupBy(covidData, ({ state }) => state)
+  const totalStates = useMemo(
+    () => Object.keys(Object.groupBy(covidData, ({ state }) => state)),
+    []
   );
   const [selectedOption, setSelectedOption] = useState<string>();
   const options: string[] = totalStates;
 
   const handleChange = (e: ChangeEvent<HTMLSelectElement>): void => {
     e.preventDefault();
-    console.log("e.target.valu", e.target.value);
-
     dispatch(setSelectedState(e.target.value));
     setSelectedOption(e.target.value);
   };
