@@ -4,6 +4,7 @@ import { setSelectedState } from "../slices/covidDataSlice";
 import { RootState } from "../store";
 
 const Header: React.FC = () => {
+  const [selectedOption, setSelectedOption] = useState<string>();
   const covidData = useSelector((state: RootState) => state.covidData.data);
 
   const dispatch = useDispatch();
@@ -11,8 +12,6 @@ const Header: React.FC = () => {
     () => Object.keys(Object.groupBy(covidData, ({ state }) => state)),
     []
   );
-  const [selectedOption, setSelectedOption] = useState<string>();
-  const options: string[] = totalStates;
 
   const handleChange = (e: ChangeEvent<HTMLSelectElement>): void => {
     e.preventDefault();
@@ -35,7 +34,7 @@ const Header: React.FC = () => {
           onChange={handleChange}
           className="border border-gray-300 p-2 rounded h-[40px] flex-1"
         >
-          {options.map((option, index) => (
+          {totalStates?.map((option, index) => (
             <option key={index} value={option}>
               {option}
             </option>

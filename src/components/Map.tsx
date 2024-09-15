@@ -23,15 +23,15 @@ interface GeoJSONFeature extends Feature<Point> {
 const Map: React.FC = () => {
   const onEachFeature = (feature: GeoJSONFeature, layer: L.Layer) => {
     const stateName = feature.properties.name;
-    const stateData = mockData.find((state) => state.state === stateName);
+    const stateData = mockData?.find((state) => state?.state === stateName);
 
     if (stateData) {
-      layer.bindTooltip(
+      layer?.bindTooltip(
         `<strong>${stateName}</strong><br>
-         Total Cases: ${stateData.totalCases[0]}<br>
-         Active Cases: ${stateData.activeCases[0]}<br>
-         Recovered: ${stateData.recovered[0]}<br>
-         Deaths: ${stateData.deaths[0]}`
+         Total Cases: ${stateData?.totalCases[0]}<br>
+         Active Cases: ${stateData?.activeCases[0]}<br>
+         Recovered: ${stateData?.recovered[0]}<br>
+         Deaths: ${stateData?.deaths[0]}`
       );
     }
   };

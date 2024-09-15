@@ -13,7 +13,7 @@ const ContentContainer: React.FC = () => {
     (state: RootState) => state.covidData?.selectedState
   );
   const stateData: StateCovidData[] = covidData?.filter(
-    (state) => state.state === selectedState
+    (state) => state?.state === selectedState
   ) as StateCovidData[];
 
   return (
