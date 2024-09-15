@@ -32,7 +32,7 @@ const Header: React.FC = () => {
           id="dropdown"
           value={selectedOption}
           onChange={handleChange}
-          className="border border-gray-300 p-2 rounded h-[40px] flex-1"
+          className="border border-gray-300 p-2 rounded  flex-1 w-[80%]"
         >
           {totalStates?.map((option, index) => (
             <option key={index} value={option}>
