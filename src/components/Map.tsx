@@ -57,7 +57,7 @@ const Map: React.FC = () => {
       <MapContainer
         center={[23.5937, 81.9629]}
         zoom={4}
-        className="w-full h-full min-h-[400px]"
+        className="w-full h-full min-h-[450px]"
       >
         {geoMock && (
           <GeoJSON
