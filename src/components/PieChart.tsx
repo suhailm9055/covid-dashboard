@@ -5,10 +5,10 @@ import { PlotData, Layout } from "plotly.js";
 interface StateDataProps {
   stateData: {
     state: string;
-    totalCases: number;
-    activeCases: number;
-    recovered: number;
-    deaths: number;
+    totalCases: number[];
+    activeCases: number[];
+    recovered: number[];
+    deaths: number[];
   };
 }
 
@@ -16,7 +16,11 @@ const PieChart: React.FC<StateDataProps> = ({ stateData }) => {
   const pieChartData: Partial<PlotData>[] = [
     {
       labels: ["Active Cases", "Recovered", "Deaths"],
-      values: [stateData.activeCases, stateData.recovered, stateData.deaths],
+      values: [
+        stateData.activeCases[0],
+        stateData.recovered[0],
+        stateData.deaths[0],
+      ],
       type: "pie",
       marker: {
         colors: ["#228779", "#E7EFED", "#E17678"],

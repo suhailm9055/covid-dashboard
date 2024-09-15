@@ -5,13 +5,12 @@ import { RootState } from "../store";
 
 const Header: React.FC = () => {
   const covidData = useSelector((state: RootState) => state.covidData.data);
-  console.log(covidData);
 
   const dispatch = useDispatch();
   const totalStates = Object.keys(
     Object.groupBy(covidData, ({ state }) => state)
   );
-  const [selectedOption, setSelectedOption] = useState<string>(totalStates[0]);
+  const [selectedOption, setSelectedOption] = useState<string>();
   const options: string[] = totalStates;
 
   const handleChange = (e: ChangeEvent<HTMLSelectElement>): void => {
