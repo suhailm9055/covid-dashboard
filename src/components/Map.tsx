@@ -55,7 +55,7 @@ const Map: React.FC = () => {
   return (
     <div className="w-full h-full">
       <MapContainer
-        center={[20.5937, 78.9629]} // Center of India
+        center={[23.5937, 81.9629]}
         zoom={4}
         className="w-full h-full min-h-[400px]"
       >
